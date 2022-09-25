@@ -1,8 +1,6 @@
 
 
 
-
-
 const { Client } = require('pg');
 
 const client = new Client('postgres://localhost:5432/juicebox-dev');
@@ -108,7 +106,7 @@ const createPost = async({
     RETURNING *;
     `, [authorId, title, content]);
     
-    const tagList = await createInitialTags(tags);
+    const tagList = await createTags(tags);
 
     return await addTagsToPost(post.id, tagList);
   } catch(err) {

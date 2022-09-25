@@ -139,18 +139,16 @@ const { client,
     }
   }
   
-  const rebuildDB = async() => {
+  async function rebuildDB() {
     try {
       client.connect();
-  
       await dropTables();
       await createTables();
       await createInitialUsers();
       await createInitialPosts();
-      await createInitialTags();
-    } catch(err) {
-      console.log('...error rebuilding DB...')
-      throw err;
+    } catch (error) {
+      console.log("Error during rebuildDB")
+      throw error;
     }
   }
   
