@@ -303,8 +303,7 @@ const getPostsByTagName = async(tagName) => {
 const getAllTags = async() => {
   try {
     const { rows } = await client.query(
-    `SELECT *
-    FROM tags;
+    `SELECT * FROM tags;
     `);
 
     return { rows };
