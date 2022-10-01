@@ -1,4 +1,4 @@
-
+//part 3 pep talk 
 const requireUser = (req, res, next) => {
     if (!req.user) {
       next({

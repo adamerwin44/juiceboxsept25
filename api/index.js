@@ -1,9 +1,23 @@
+// api/index.js copy from part 1 collecting common middleware
+const express = require('express');
+const apiRouter = express.Router();
+
+
+const usersRouter = require('./users');
+apiRouter.use('/users', usersRouter);
+
+const postsRouter = require('./posts');
+apiRouter.use('/posts', postsRouter);
+
+const tagsRouter = require('./tags');
+apiRouter.use('/tags', tagsRouter);
+
 //copied directly from part 2 6. working inside of api index .js
 const jwt = require('jsonwebtoken');
 const { getUserById } = require('../db');
 const { JWT_SECRET } = process.env;
 
-// set `req.user` if possible
+// set `req.user` if possible  cpoying from part 2 working insdie of api/index
 apiRouter.use(async (req, res, next) => {
     const prefix = 'Bearer ';
     const auth = req.header('Authorization');
@@ -33,19 +47,7 @@ apiRouter.use(async (req, res, next) => {
 
 //copied directly from part 1 middleware
 
-// api/index.js
-const express = require('express');
-const apiRouter = express.Router();
 
-
-const usersRouter = require('./users');
-apiRouter.use('/users', usersRouter);
-
-const postsRouter = require('./posts');
-apiRouter.use('/posts', postsRouter);
-
-const tagsRouter = require('./tags');
-apiRouter.use('/tags', tagsRouter);
 
 
 apiRouter.use((error, req, res, next) => {

@@ -92,7 +92,7 @@ const getUserById = async(userId) => {
     throw err;
   }
 }
-
+//appears again in part 3 writing posts
 const createPost = async({
   authorId,
   title,

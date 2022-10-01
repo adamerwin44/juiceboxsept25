@@ -87,5 +87,3 @@ usersRouter.get('/', async(req, res) => {
 
 module.exports = usersRouter;
 
-
-module.exports = usersRouter;
