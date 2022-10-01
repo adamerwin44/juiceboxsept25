@@ -2,7 +2,6 @@
 const express = require('express');
 const apiRouter = express.Router();
 
-
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
 
@@ -57,9 +56,8 @@ apiRouter.use((error, req, res, next) => {
     });
 });
 
+module.exports = apiRouter;
 
 
 
 // server.use(express.json())
-
-module.exports = apiRouter;
