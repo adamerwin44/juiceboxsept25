@@ -6,6 +6,10 @@ const { getAllUsers, getUserByUsername, createUser } = require('../db');
 
 const jwt = require('jsonwebtoken');
 
+usersRouter.use((req, res, next)  => {
+    console.log('Request coming in for /users')
+    next();
+})
 
 
 usersRouter.post('/register', async (req, res, next) => {
@@ -59,10 +63,10 @@ usersRouter.post('/login', async(req, res, next) => {
     const user = await getUserByUsername(username);
     
     if (user && user.password == password) {
-      const token = jwt.sign({ id: 1, username: "albert" }, process.env.JWT_SECRET, { expiresIn: '1w' });
+      const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET);
       res.send({ 
         message: "You're logged in!",
-        "token": token
+        token
       });
     } else {
       next({

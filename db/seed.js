@@ -7,6 +7,7 @@ const { client,
     updatePost,
     getAllPosts,
     getAllTags,
+    getPostById,
     getPostsByTagName,
   } = require('./index');
   
