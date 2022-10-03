@@ -1,5 +1,5 @@
 //part 3 pep talk 
-const requireUser = (req, res, next) => {
+function requireUser  (req, res, next)  {
    console.log (req.user)
     if (!req.user) {
       next({
